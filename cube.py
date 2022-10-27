@@ -190,7 +190,7 @@ def down_turn(data):
 
 def print_cube(color_data,img):
     
-    #畫出模方的展開圖
+    #畫出方塊的展開圖
 
     for i in range(6):
         if i<2:
@@ -289,15 +289,18 @@ left=5
 
 #BGR color
 #此為整個方塊的顏色配置
-'''
+# [top_left],[topmid],[top_right] ,   [left] , [center], [right] ,[bottom_left],[bottom_mid],[botto_right]
+
+
+
 cube_color_data=[[[black_BGR , black_BGR , black_BGR]  ,  [black_BGR , black_BGR , black_BGR]   ,  [black_BGR , black_BGR , black_BGR] ],#up
                 [[black_BGR , black_BGR , black_BGR]  ,  [black_BGR , black_BGR , black_BGR]   ,  [black_BGR , black_BGR , black_BGR] ], #frount
                 [[black_BGR , black_BGR , black_BGR]  ,  [black_BGR , black_BGR , black_BGR]   ,  [black_BGR , black_BGR , black_BGR] ],#down
                 [[black_BGR , black_BGR , black_BGR]  ,  [black_BGR , black_BGR , black_BGR]   ,  [black_BGR , black_BGR , black_BGR] ],#right
                 [[black_BGR , black_BGR , black_BGR]  ,  [black_BGR , black_BGR , black_BGR]   ,  [black_BGR , black_BGR , black_BGR] ],#back
                 [[black_BGR , black_BGR , black_BGR]  ,  [black_BGR , black_BGR , black_BGR]   ,  [black_BGR , black_BGR , black_BGR] ]]#left
-                # [top_left],[topmid],[top_right] ,   [left] , [center], [right] ,[bottom_left],[bottom_mid],[botto_right]
-
+               
+'''
 cube_color_data=[[[red_BGR , red_BGR , red_BGR]  ,  [red_BGR , red_BGR , red_BGR]   ,  [red_BGR , red_BGR , red_BGR] ],#up
                 [[yello_BGR , yello_BGR , yello_BGR]  ,  [yello_BGR , yello_BGR , yello_BGR]   ,  [yello_BGR , yello_BGR , yello_BGR] ], #frount
                 [[orange_GBR , orange_GBR , orange_GBR]  ,  [orange_GBR , orange_GBR , orange_GBR]   ,  [orange_GBR , orange_GBR , orange_GBR] ],#down
@@ -305,14 +308,14 @@ cube_color_data=[[[red_BGR , red_BGR , red_BGR]  ,  [red_BGR , red_BGR , red_BGR
                 [[white_BGR , white_BGR , white_BGR]  ,  [white_BGR , white_BGR , white_BGR]   ,  [white_BGR , white_BGR , white_BGR] ],#back
                 [[green_BGR , green_BGR , green_BGR]  ,  [green_BGR , green_BGR , green_BGR]   ,  [green_BGR , green_BGR , green_BGR] ]]#left
                 #測試用 完整顏色 '''
-
+'''
 cube_color_data=[[[[255, 0, 0], [255, 0, 0], [0, 255, 0]], [[255, 0, 0], [0, 255, 0], [0, 128, 255]], [[255, 0, 0], [255, 255, 255], [255, 255, 255]]], 
                 [[[0, 255, 255], [0, 128, 255], [0, 255, 0]], [[0, 255, 255], [255, 255, 255], [0, 255, 255]], [[255, 255, 255], [0, 255, 255], [255, 255, 255]]], 
                 [[[0, 128, 255], [0, 0, 255], [0, 128, 255]], [[0, 255, 0], [255, 0, 0], [0, 255, 0]], [[0, 128, 255], [0, 255, 0], [255, 0, 0]]], 
                 [[[0, 0, 255], [0, 255, 255], [0, 255, 255]], [[255, 0, 0], [0, 128, 255], [0, 0, 255]], [[0, 255, 0], [0, 0, 255], [0, 128, 255]]], 
                 [[[0, 0, 255], [0, 128, 255], [255, 255, 255]], [[255, 255, 255], [0, 255, 255], [255, 0, 0]], [[0, 255, 255], [255, 255, 255], [0, 255, 0]]], 
                 [[[0, 0, 255], [0, 128, 255], [0, 0, 255]], [[255, 255, 255], [0, 0, 255], [0, 255, 0]], [[0, 255, 255], [0, 128, 255], [255, 0, 0]]]]
-
+'''
 '''
 data[0]                                   | data[up]     
 
@@ -339,7 +342,7 @@ data[2]                                   | data[up]
 
 
 #相機判斷顏色
-cam_on=False
+cam_on=True
 
 while(cam_on):
     ret,img = cap.read()#捕獲一幀影象
@@ -423,6 +426,7 @@ while(cam_on):
     #判斷按鍵，如果按鍵為q，退出迴圈
     #if cv2.waitKey(1) & 0xFF == ord('q'):
     if cv2.waitKey(1) ==27:
+        # ESC key
         break
 
 cap.release()#關閉相機
@@ -451,6 +455,7 @@ while(True):
     cv2.imshow('img2', img)
 
     if cv2.waitKey(1) ==27:
+        # ESC key
         break
 
 
